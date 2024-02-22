@@ -54,7 +54,7 @@ public class Car {
     }
 
     public void assignDriver(Person driver) {
-        if (driver != null && this.isAvailable() && driver.getCar().getRegistrationNumber() == this.getRegistrationNumber()) {
+        if (driver != null && this.isAvailable() && !driver.isPedestrian() && driver.getCar().getRegistrationNumber() == this.getRegistrationNumber()) {
             this.driver = driver;
         }
     }
