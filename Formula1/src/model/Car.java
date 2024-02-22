@@ -53,10 +53,12 @@ public class Car {
         return this.driver == null;
     }
 
-    public void assignDriver(Person driver) {
-        if (driver != null && this.isAvailable() && !driver.isPedestrian() && driver.getCar().getRegistrationNumber() == this.getRegistrationNumber()) {
+    public boolean assignDriver(Person driver) {
+        if (driver != null && this.isAvailable() && driver.getCar().getRegistrationNumber() == this.getRegistrationNumber()) {
             this.driver = driver;
+            return true;
         }
+        return false;
     }
 
     public void removeDriver() {

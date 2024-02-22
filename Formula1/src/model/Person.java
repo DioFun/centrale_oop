@@ -51,11 +51,16 @@ public class Person {
         return this.car == null;
     }
 
-    public void assignCar(Car car) {
+    public boolean assignCar(Car car) {
         if (car != null && car.isAvailable() && this.isPedestrian()) {
             this.car = car;
-            car.assignDriver(this);
+            if (!car.assignDriver(this)) {
+                this.car = null;
+                return false;
+            }
+            return true;
         }
+        return false;
     }
 
     public boolean returnCar() {
